@@ -1,0 +1,65 @@
+Partes Escritas: 
+
+UT5_PD1:
+
+1-PSEUDOCÓDIGO INSERTAR:
+
+
+TNodoArbolGenerico.insertar(unaEtiqueta, etiquetaPadre)
+
+COM
+  Si etiquetaPadre = ""
+   si raíz = nulo
+      nuevoNodo = crearNodo(unaEtiqueta)
+      raíz = nuevoNodo 
+      devolver true
+  SINO
+    nodoPadre = buscar(etiquetaPadre) //Buscamos el nodo en el Arbol que tenga la etiqueta padre
+    Si nodoPadre = nulo
+       devolver false //No se encontró al nodoPadre
+    SINO
+      nuevoNodo = crearNodo(unaEtiqueta)
+     si nodoPadre.primerHijo = nulo
+        nodoPadre.primerHijo = nuevoNodo
+        devolver true
+     SINO  
+      //SOLO RECORRO LOS HERMANOS DERECHOS, SI EL PADRE YA TIENE PRIMER HIJO
+      actual = nodoPadre.primerHijo
+      mientras actual.hermanoDerecho <> nulo
+              actual = actual.hermanoDerecho
+      fin mientras
+         actual.hermanoDerecho = nuevoNodo //RECORREMOS TODOS LOS HERMANOS DERECHOS Y LO AÑADIMOS AL FINAL COMO EL ULTIMO HERMANO DERECHO
+         devolver true
+  fin si
+  devolver false
+FIN
+
+
+2- Casos de prueba insertar:
+
+   Caso1:
+   insertar 3 nodos al arbol genérico, y verificar si efectivamente se han insertado.
+
+   Caso2:
+    
+   insertar un nodo al arbol genérico con la etiqueta padre vacía, y verificar si ese nodo se ha insertado y se ha convertido en la raíz del árbol.
+
+   Caso3:
+   
+   insertar 3 nodos al arbol genérico y verificar si uno de los nodos se ha insertado como raíz, y el otro como hermanoDerecho
+
+  
+  Casos de prueba Buscar:
+   
+  Caso1:
+  
+  buscar un nodo con una etiqueta que existe en el arbol genérico, verificar si te devuelve el elemento deseado
+
+  Caso2:
+  buscar un nodo con una etiqueta que no existe en el árbol genérico, verificar si efectivamente no te devuelve ningún elemento
+
+  
+  Casos de prueba listarIdentado:
+
+  Caso1:
+  Añadir 6 nodos al arbol genérico y verificar si los nodos se imprimen en la identación correcta en cuanto a niveles.
